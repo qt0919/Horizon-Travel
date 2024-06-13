@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+
+
+
+{% block content %}
+
+<div class="row justify-content-center text-center">
+  <H2> Add User Details</H2>
+  <form action="/add_user">    
+    Enter Customer ID: <input  type="text" name="idCustomer"  id="idCustomer"/><br>
+    Enter Username: <input type="text" name="username"  id="username"/><br>
+    Enter Tel: <input type="text" name="tel"  id="tel"/><br>
+    Enter Email: <input type="text" name="email"  id="email" /><br>
+    Enter Gender: <input type="text" name="gender"  id="gender" /><br>
+    Enter Password: <input type="text" name="password_hash"  id="password_hash"/><br>
+    Enter Usertype: <input type="text" name="usertype"  id="usertype"/><br>
+    <button type="submit" class="btn btn-primary btn-block"> Update Details</button>       
+  </form>   
+  <br><br><h1>All User Details</h1><br>
+    <div class='justify-content-center'>
+        <form action="/add_user" method="GET">    
+	    <table border = 1px solid black; class="center" style="margin-left: auto; margin-right: auto; border-style: solid;"> 
+        <tr> <th> Customer ID:     </th>
+             <th> Username:    </th>
+             <th> Tel:     </th> 
+             <th>  Email:    </th>
+             <th>  Gender:    </th>
+             <th>  Password:   </th> 
+             <th>  Usertype: </th>
+        </tr>
+	    {% for row in resultset %}
+	    <tr> <td> {{row[0]}}  </td> 
+            <td> {{row[1]}}   </td> 
+            <td> {{row[2]}}   </td> 
+            <td> {{row[3]}}   </td> 
+            <td> {{row[4]}}   </td>
+            <td> {{row[5]}}   </td>
+            <td> {{row[6]}}   </td>
+        </tr> 
+	    {% endfor %} 
+	    </table>  
+        </form>
+    </div> 
+</div>
+
+{% endblock content %}

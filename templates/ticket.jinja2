@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+
+<br><h1 style="text-align: center;">Your Tickets</h1>
+{% if not ticket_info %}
+    <h1>You have no bookings.</h1>
+{% else %}
+{% for ticket in ticket_info %}
+<div class="pb-3 justify-content-center" style="display:inline-table; padding: 50px">
+  <div class="card"  style="width: 100%;">
+    <div class="card-header">
+      <i class="bi bi-airplane-fill" style="position: relative;"></i>
+      <br>
+      <b>Departure City  :</b>    <b>{{ ticket[1] }}  <i class="bi bi-arrow-left-right"></i>{{ ticket[2] }}</b> <b>:   Return City</b>
+      
+    </div>
+    <div class="card-body">
+      <h5>Your Journey</h5>
+      <br>
+      <h6> Booking ID:{{ ticket[0] }} </h6>
+      <ul class="list-unstyled ps-4">
+        <li><b>Departure Date:  {{ ticket[3] }}</b></li>
+        <li><b>{{ ticket[5] }}</b><i class="bi bi-arrow-right"></i><b>{{ ticket[6] }}</b></li>
+      </ul>
+      <ul class="list-unstyled ps-4">
+        <li><b>Return Date:  {{ ticket[4] }}</b></li>
+        <li><b>{{ ticket[6] }}</b><i class="bi bi-arrow-right"></i><b>{{ ticket[6] }}</b></li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <p>Number Of Seats:  {{ ticket[7] }}</p>
+      <p>Ticket Price: £ {{ ticket[9] }} </p>
+      <p>Total Price: £ {{ ticket[8] }}</p>
+      <a href="{{ url_for('cancellation', booking_id=ticket[0]) }}"" class="btn btn-danger">Cancel</a>
+    </div>
+  </div>
+
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+  <h1>This is start of the basic booking process</h1> 
+  <h2> booking details </h2>
+
+
+    <form action="/booking_confirm/" method="POST">   
+      Departure City : {{lookupdata[0]}} <br/>
+      <input type="hidden" name="deptcity" id="deptcity" value="{{lookupdata[0]}}"/>
+      Arrival City : {{lookupdata[1]}} <br/>
+      <input type="hidden" name="arrivcity" id="arrivcity" value="{{lookupdata[1]}}"/>
+      Outward Date : {{lookupdata[2]}} <br/>
+      <input type="hidden" name="date" id="date" value="{{lookupdata[2]}}"/>
+      Return Date : {{lookupdata[3]}} <br/>
+      <input type="hidden" name="returndate" id="returndate" value="{{lookupdata[3]}}"/>
+      Seats : {{lookupdata[5]}} <br/>
+      <input type="hidden" name="nooftickets" id="nooftickets" value="{{lookupdata[4]}}"/>
+      
+
+	  <table border = 2> 
+        <tr>
+            <th> Departure Time </th> <th> Arrival Time </th>  
+            <th> Standard Price </th> <th> Total Price </th> 
+            <th> Selected Option </th>
+            
+        </tr>
+        
+	    {% for row in resultset %}
+	    <tr> 
+            <td> {{row[2]}} </td> 
+            <td> {{row[4]}} </td> 
+            <td> {{row[5]}} </td>              
+            <td> {{row[6]}} </td>
+            <input type="hidden" name="totalfare" id="totalfare" value="{{row[6]}}"/>
+            <td> <input type="radio" name="bookingchoice" value="{{row[0]}}" checked></td> 
+        </tr>
+             
+	   {% endfor %} 
+	  </table>  
+  
+    <br/>
+    <H2> Payment </H2>
+      Full name on card: 
+      <input type="text" name="cardname" id="cardname" /> <br/>
+      Card number:
+      <input type="number" name="cardnumber" id="cardnumber" max="9999999999999999" size="16"/> <br/>
+      Card expiry:
+      <input type="text" name="cardexpiry" id="cardexpiry" max="9999" size="4"/> <br/>
+      CVV:
+      <input type="number" name="cvv" id="cvv" max="999" size="3"/> <br/>
+      <input type="submit" value="Confirm Booking and Payment"/>
+    </form> 
+    <a href="/">Go to Home Page</a>
+  </p>
+
+{% endblock content %}

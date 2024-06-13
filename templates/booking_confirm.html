@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<h1>This is start of the basic booking process</h1> 
+<!--[journeyid, departcity, arrivalcity, outdate, returndate, adultseats, childseats, totalfare, bookingid, deptTime, arrivTime]-->
+<form action="/dumpsVar/" method="POST">
+
+Departure City : {{resultset[1]}} <br/>
+Departure Date : {{resultset[3]}} <br/>
+Departure Time : {{resultset[9]}} <br/>
+Arrival City : {{resultset[2]}} <br/>  
+Arrival Time : {{resultset[8]}} <br/>
+Return Date : {{resultset[4]}} <br/>
+Seats Number : {{resultset[5]}} <br/>
+Total Fare : {{resultset[6]}} <br/>
+Booking ID : {{resultset[7]}} <br/>
+Payment: Card ending with ****** {{cardnumber}} <br/>
+<input type="hidden" name="totalfare" value="{{resultset[7]}}" /> 
+<input type="hidden" name="bookingid" value="{{resultset[8]}}" />   
+<input type="submit" value="Proceed to further actions - to dumpsVar" /> 
+</form>  
+
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Horizon Travel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widtd=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="static/style.css" >
+    
+
+</head>
+<script>
+    function getarrivalcity(deptcity)    
+    {
+          var req = new XMLHttpRequest();        
+          arrivalslist = document.getElementById('arrivalslist');        
+          
+          req.onreadystatechange = function(){
+              if (req.readyState == 4){
+                  if (req.status != 200){
+                      //error handling code here
+                  }
+                  else{
+                      var response = JSON.parse(req.responseText);                   
+                      //document.getElementById('myDiv').innerHTML = response.username
+                      var size = response.size;                   
+                      //alert(response.returncities[0]);
+                      for (var x=0; x < arrivalslist.length; x++){
+                          arrivalslist.remove(x);                        
+                      }
+                      
+                      for (var i=0; i < size; i++){  
+  
+                              arrivalslist.add(new Option(response.returncities[i], response.returncities[i]));    
+                      }
+                         // var option = document.createElement("Option");
+                          //option.text = response.returncities;
+                          //arrivalslist.add(option);
+                  }
+              }
+          }
+          req.open('GET', '/returncity/?q='+deptcity);
+          req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");   
+          req.send(); 
+          return false;
+      }
+  
+</script>
+<body>
+
+{% include "components/nav.html" %}
+
+{% block content %}
+
+{% endblock content %}
+
+{% include "components/footer.html" %}
+
+</body>
+
+</html>

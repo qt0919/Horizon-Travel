@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+
+
+
+{% block content %}
+
+<div class="row justify-content-center text-center">
+  <H2> Change Details</H2>
+<form action="{{ url_for('change_password') }}" method="post">
+  <br>
+  <label for="new_password">New Password:</label>
+  <input type="password" id="new_password" name="new_password" required>
+  <br>
+
+  <label for="confirm_password">Confirm New Password:</label>
+  <input type="password" id="confirm_password" name="confirm_password" required>
+  <br>
+
+  <input type="submit" value="Change Password">
+</form>  
+  <br><br><h1>User Details</h1><br>
+    <div class='justify-content-center'>
+        <form action="/change_user" method="GET">    
+	    <table border = 1px solid black; class="center" style="margin-left: auto; margin-right: auto; border-style: solid;"> 
+        <tr> <th> Customer ID:     </th>
+             <th> Username:    </th>
+             <th> Tel:     </th> 
+             <th>  Email:    </th>
+             <th>  Gender:    </th>
+             <th>  Password:   </th> 
+        </tr>
+	    {% for row in resultset %}
+	    <tr> <td> {{row[0]}}  </td> 
+            <td> {{row[1]}}   </td> 
+            <td> {{row[2]}}   </td> 
+            <td> {{row[3]}}   </td> 
+            <td> {{row[4]}}   </td>
+            <td> {{row[5]}}   </td>
+        </tr> 
+	    {% endfor %} 
+	    </table>  
+        </form>
+    </div> 
+</div>
+
+{% endblock content %}

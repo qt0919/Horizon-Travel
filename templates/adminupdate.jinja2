@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+
+
+
+{% block content %}
+
+<div class="row justify-content-center text-center">
+  <H2> Update Journey</H2>
+  <form action="/update_transport">    
+    Enter transport id: <input  type="text" name="transportid"  id="transportid"/><br>
+    Enter Departure City: <input type="text" name="departurecity"  id="departurecity"/><br>
+    Enter Departure Time: <input type="time" name="time_from"  id="time_from"/><br>
+    Enter Arrival City: <input type="text" name="arrivcity"  id="arrivcity" /><br>
+    Enter Arrival Time: <input type="time" name="time_to"  id="time_to"/><br>
+    Enter Price Ticket: <input type="text" name="price"  id="price"/><br>
+    <button type="submit" class="btn btn-primary btn-block"> Update Journey</button>       
+  </form>   
+  <br><br><h1>All Journey</h1><br>
+    <div class='justify-content-center'>
+        <form action="/update_transport" method="GET">    
+	    <table border = 1px solid black; class="center" style="margin-left: auto; margin-right: auto; border-style: solid;"> 
+        <tr> <th> Transport ID     </th>
+             <th> Departure City     </th>
+             <th> Departure Time:     </th> 
+             <th> Arrival City     </th>
+             <th> Arrival Time    </th> 
+             <th> Price </th>
+        </tr>
+	    {% for row in resultset %}
+	    <tr> <td> {{row[0]}}  </td> 
+            <td> {{row[1]}}   </td> 
+            <td> {{row[2]}}   </td> 
+            <td> {{row[3]}}   </td> 
+            <td> {{row[4]}}   </td>
+            <td> {{row[5]}}   </td>
+            
+        </tr> 
+	    {% endfor %} 
+	    </table>  
+        </form>
+    </div> 
+</div>
+
+{% endblock content %}

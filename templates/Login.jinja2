@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<div id="home" class="container-fluid p-3" style="width:85%" >
+        <div class="text-center">
+          <img src="/static/Horizon Travel.jpg" class="rounded-circle" alt="Horizon Travel Logo" style="width:200px">
+          <h2>Login</h2>
+          <h4>Come on let's start using us</h4>
+          <div class="justify-content-center">
+            <div class="bg-light m-3 p-5">
+              <div class="text-body">
+                <h1>WELCOME TO HORIZON TRAVEL</h1>
+              </div>
+              <br>
+              <p style="color:red;"> {{error}} </p>
+              <div class="text-body">
+                <form action="/Login"  method="post">
+                  <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ">
+                  </div>
+                  <div class="mb-3">
+                     <label for="password" class="form-label">Password:</label>
+                     <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" >
+                  </div>
+                  <div class="form-check mb-3">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="Signin" class="btn btn-dark">Create New Account</a>
+                </form>
+              </div>
+            </div>      
+          </div>
+        </div> 
+      </div>
+{% endblock content %}

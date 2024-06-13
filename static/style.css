@@ -1,0 +1,85 @@
+     .navbar{
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      .row.content{
+        height: 650px;
+      }
+
+      .sidenav{
+        padding-top: 20px;
+        background-color: aliceblue;
+        height: 100%0;
+      }
+
+      footer{
+        background-color: darkblue;
+        color: white;
+        padding: 15px;
+      }
+
+      @media  screen and (max-width:767px){
+        .sidenav{
+            height: auto;
+            padding: 15px;
+        }
+        .row.content{height: auto;}
+      }
+
+      .background{
+        background-image: url(background2.jpg);
+        width: 100%;
+      }
+
+      form {
+        background-color: #ffffff;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+
+
+      table, th, td {
+        border: 1px solid black;
+      }
+
+
+      a:link, a:visited{color:whitesmoke; background-color: transparent;}
+      a:hover{color:blue; background-color: transparent;text-decoration: underline;}
+     
+      .bottom {
+        .bar--code {
+          height: 50px;
+          width: 80%;
+          margin: 0 auto;
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background: #000;
+            top: 0;
+            left: 0;
+            box-shadow: 10px 0 #000, 30px 0 #000, 40px 0 #000, 67px 0 #000, 90px 0 #000,
+              100px 0 #000, 180px 0 #000, 165px 0 #000, 200px 0 #000, 210px 0 #000,
+              135px 0 #000, 120px 0 #000;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background: #000;
+            top: 0;
+            left: 11px;
+            box-shadow: 12px 0 #000, -4px 0 #000, 45px 0 #000, 65px 0 #000, 72px 0 #000,
+              78px 0 #000, 97px 0 #000, 150px 0 #000, 165px 0 #000, 180px 0 #000,
+              135px 0 #000, 120px 0 #000;
+          }
+        }
+      }
+
+      
+      
